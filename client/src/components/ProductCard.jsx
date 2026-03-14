@@ -1,9 +1,28 @@
 import {useState} from "react";
 
-const ProductCard = ({product, clickOnAdd}) => {
-    const [selectedSize, setSelectedSize] = useState(
-        product.sizes?.[0] || ""
-    );
+const ProductCard = ({product, clickOnAdd, loading = false}) => {
+    const [selectedSize, setSelectedSize] = useState(product?.sizes?.[0] || "");
+
+    if (loading) {
+        return (
+            <div className="border rounded-lg overflow-hidden shadow-sm bg-white animate-pulse">
+                <div className="h-64 w-full bg-gray-200" />
+                <div className="p-4 space-y-3">
+                    <div className="h-3 w-20 bg-gray-200 rounded" />
+                    <div className="h-4 w-3/4 bg-gray-200 rounded" />
+                    <div className="h-3 w-full bg-gray-200 rounded" />
+                    <div className="h-3 w-5/6 bg-gray-200 rounded" />
+                    <div className="h-5 w-24 bg-gray-200 rounded" />
+                    <div className="flex gap-2 mt-2">
+                        <div className="h-7 w-10 bg-gray-200 rounded" />
+                        <div className="h-7 w-10 bg-gray-200 rounded" />
+                        <div className="h-7 w-10 bg-gray-200 rounded" />
+                    </div>
+                    <div className="w-full mt-3 h-9 bg-gray-200 rounded-md" />
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition bg-white">
