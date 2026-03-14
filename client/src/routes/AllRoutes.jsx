@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import LandingPage from "../pages/LandingPage.jsx";
-import MainLayout from "../layouts/mainLayout.jsx";
+import MainLayout from "../layouts/MainLayout.jsx";
 import LoginPage from "../pages/LoginPage.jsx";
 import RegisterPage from "../pages/RegisterPage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
