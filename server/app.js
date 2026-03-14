@@ -24,8 +24,6 @@ app.use(compression());
 app.use(cookieParser());
 
 app.use(cors(CORS_OPTIONS));
-
-
 app.use(requestHandler);
 
 app.use(authToken)
@@ -34,15 +32,8 @@ app.use(BASE_API_URL, apiRoutes);
 
 app.use(errorHandler);
 
+const PORT = process.env.PORT || 3000;
 
-
-
-// server.on('error', (e) => {
-//     if (e.code === 'EADDRINUSE') {
-//         console.error('Port 3000 is busy. Retrying on 3001...');
-//         setTimeout(() => {
-//             server.close();
-//             server.listen(3001);
-//         }, 1000);
-//     }
-// });
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
