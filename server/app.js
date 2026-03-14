@@ -11,7 +11,6 @@ import cors from "cors";
 
 
 const app = express();
-const PORT = 3000;
 
 connectDB();
 
@@ -36,9 +35,7 @@ app.use(BASE_API_URL, apiRoutes);
 app.use(errorHandler);
 
 
-const server = app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-});
+
 
 // server.on('error', (e) => {
 //     if (e.code === 'EADDRINUSE') {
