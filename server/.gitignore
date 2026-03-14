@@ -1,0 +1,7 @@
+# Environment variables
+.env
+
+# Other common ignores (examples)
+node_modules/
+venv/
+*.log
