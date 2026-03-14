@@ -73,9 +73,9 @@ export const setRefreshToken = async (res, token) => {
     res.cookie('refreshToken', token, {
         httpOnly: true,
         secure: NODE_ENV === 'production',
-        sameSite: 'lax',
+        // Cross-site cookie (Vercel frontend -> Render backend) requires SameSite=None + Secure
+        sameSite: NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: REFRESH_EXPIRES_IN * 1000,
-        domain: 'localhost',
         path: '/e-com/auth'
     });
     return true
@@ -84,8 +84,10 @@ export const setRefreshToken = async (res, token) => {
 export const clearRefreshTokenCookie = async (res) => {
     if (!res) return false;
     res.clearCookie("refreshToken", {
-        httpOnly: true, secure: NODE_ENV === "production", sameSite: "strict", domain: 'localhost', path: '/e-com/auth'
-        ,
+        httpOnly: true,
+        secure: NODE_ENV === "production",
+        sameSite: NODE_ENV === "production" ? "none" : "lax",
+        path: "/e-com/auth",
     });
     return true;
 }

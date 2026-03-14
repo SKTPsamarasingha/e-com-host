@@ -12,6 +12,9 @@ import cors from "cors";
 
 const app = express();
 
+// Needed on Render so secure cookies work behind proxy/load balancer
+app.set("trust proxy", 1);
+
 connectDB();
 
 
